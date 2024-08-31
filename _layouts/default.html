@@ -5,24 +5,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap">
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Anonymous Pro', monospace;
+      color: #d3d7cf;
+      background-color: #2e3436;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0 1rem;
+    }
+
+    a {
+      color: #729fcf;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header, footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    nav ul li {
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    footer {
+      padding: 1rem 0;
+      font-size: 0.875rem;
+      color: #888a85;
+    }
+
+    footer p {
+      margin: 0.5rem 0;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <h1><a href="{{ site.baseurl | prepend: site.url }}">{{ site.title }}</a></h1>
-  <p>{{ site.description }}</p>
-  <nav>
-    <ul>
-      <li><a href="{{ site.baseurl | prepend: site.url }}/">Home</a></li>
-      {% for page in site.pages %}
-        {% if page.title and page.url != "/" %}
-          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
-</header>
+  <header>
+    <h1><a href="{{ site.baseurl | prepend: site.url }}">{{ site.title }}</a></h1>
+    <p>{{ site.description }}</p>
+    <nav>
+      <ul>
+        <li><a href="{{ site.baseurl | prepend: site.url }}/">Home</a></li>
+        {% for page in site.pages %}
+          {% if page.title and page.url != "/" %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
 
   <main>
     {{ content }}
@@ -30,6 +89,7 @@
 
   <footer>
     <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    <p>Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> and the <a href="https://github.com/pages-themes/hacker" target="_blank">Hacker theme</a>.</p>
   </footer>
 
 </body>
