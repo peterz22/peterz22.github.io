@@ -40,9 +40,9 @@ Sound good? Let’s jump into the steps.
 First, let’s channel our inner Hermione and do some detective work. We need to find where in Voldemort’s code the string decryption is happening. Usually, this involves looking for routines that deal with encrypted data—something like an XOR loop, custom cipher/hashing, AES whatever...
 
 The number of cross references combined with the bitwise operations found inside screams string decryption already.
-![Cross-references](assets/1.png)
+![Cross-references](/assets/1.png)
 
-![Bitwise_operations](assets/2.png)
+![Bitwise_operations](/assets/2.png)
 
 ## Getting the Cross-References and Arguments in IDA
 
@@ -88,7 +88,7 @@ get_xrefs_and_args("decrypt_string")
 Now that we have the decryption function and the encrypted strings, it’s time to unleash **Dumpulator**. Here’s the basic idea: take a **memory dump** from the malware (which you can do in Process Hacker, X64dbg or numerous other ways), and feed it into Dumpulator. The tool will simulate the decryption routine, process the strings, and return the decrypted results.
 
 Here we are using the built-in MiniDump command as suggested on the linked GitHub page.
-![Creating_dump](assets/1.png)
+![Creating_dump](/assets/3.png)
 
 Think of it as letting Voldemort’s own magic undo itself. We’re tricking the malware into decrypting its own strings for us!
 ```python
@@ -114,7 +114,7 @@ Note the constant passed to the `set_name` function, those options are very usef
 Once Dumpulator has decrypted the strings, we can pull those results back into IDA. At this point, you have a couple of options like rename the variables or add them as comments whichever you prefer.
 
 As the previous python snippet shows I set them as names and they're looking good!
-![Magical_result](assets/4.png)
+![Magical_result](/assets/4.png)
 
 ## Wrapping Up
 

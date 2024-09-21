@@ -9,8 +9,10 @@ body {
 
 .container {
   width: 80%;
+  max-width: 1200px;
   margin: auto;
   overflow: hidden;
+  padding: 0 15px;
 }
 
 header {
@@ -45,4 +47,47 @@ footer {
   text-align: center;
   padding: 10px 0;
   margin-top: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 0 10px;
+  }
+
+  header {
+    padding-top: 20px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  main {
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  footer {
+    padding: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: 10px;
+  }
+
+  footer {
+    padding: 8px 0;
+  }
 }
